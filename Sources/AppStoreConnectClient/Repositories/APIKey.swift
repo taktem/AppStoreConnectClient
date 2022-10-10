@@ -22,9 +22,9 @@ final class AppStoreConnectTokenGenerator {
         let issuedAtTime: Date
         let expiration: ExpirationClaim
         let audience: AudienceClaim = "appstoreconnect-v1"
-        
+
         func verify(using signer: JWTSigner) throws {
-            try self.expiration.verifyNotExpired()
+            try expiration.verifyNotExpired()
         }
     }
 
