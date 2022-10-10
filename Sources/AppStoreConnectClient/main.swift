@@ -1,11 +1,6 @@
 import Foundation
 
-let token = try AppStoreConnectTokenGenerator.generate()
-let url = URL(string: "https://api.appstoreconnect.apple.com//v1/apps")!
-var request = URLRequest(url: url)
-request.allHTTPHeaderFields = [
-    "Authorization": "Bearer \(token)"
-]
-let response = try await URLSession.shared.data(for: request)
-let responseString = String(data: response.0, encoding: .utf8)
-print(responseString as Any)
+let apps = try await AppStoreConnectRepository.Apps().fetch()
+let jsonData = try JSONEncoder().encode(apps)
+let json = String(data: jsonData, encoding: .utf8)!
+print(json)

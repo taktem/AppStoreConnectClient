@@ -28,7 +28,7 @@ final class AppStoreConnectTokenGenerator {
         }
     }
 
-    static func generate() throws -> String {
+    static func generate(expirationSeconds: Int = 20) throws -> String {
         guard
             let issueID = ProcessInfo.processInfo.environment["APPLE_API_ISSURE_ID"],
             let keyContent = ProcessInfo.processInfo.environment["APPLE_API_KEY_CONTENT"],
@@ -41,7 +41,7 @@ final class AppStoreConnectTokenGenerator {
         let payload = AppStoreConectPayload(
             issueID: .init(value: issueID),
             issuedAtTime: startAt,
-            expiration: .init(value: .init(timeInterval: 2 * 60, since: startAt))
+            expiration: .init(value: .init(timeInterval: TimeInterval(expirationSeconds), since: startAt))
         )
 
         return try! signer.sign(payload, kid: JWKIdentifier(string: keyID))

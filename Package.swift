@@ -15,12 +15,14 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/jwt-kit.git", "4.0.0" ..< "5.0.0"),
+        .package(url: "https://github.com/taktem/SwiftAPIClient.git", "1.0.0" ..< "2.0.0")
     ],
     targets: [
         .executableTarget(
             name: "AppStoreConnectClient",
             dependencies: [
                 .product(name: "JWTKit", package: "jwt-kit"),
+                .product(name: "APIClient", package: "SwiftAPIClient")
             ]),
         .testTarget(
             name: "AppStoreConnectClientTests",

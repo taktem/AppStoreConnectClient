@@ -17,6 +17,15 @@
         "revision" : "d9825fa541df64b1a7b182178d61b9a82730d01f",
         "version" : "2.1.0"
       }
+    },
+    {
+      "identity" : "swiftapiclient",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/taktem/SwiftAPIClient.git",
+      "state" : {
+        "revision" : "41e259cf24276be68952fe045af9d8eabe00f3c5",
+        "version" : "1.0.0"
+      }
     }
   ],
   "version" : 2
